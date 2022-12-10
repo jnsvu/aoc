@@ -2,11 +2,14 @@ f = open("data.txt")
 path = []
 file_size_by_path = {"/": 0}
 
+
 def get_path():
     return "_".join(path)
 
+
 def get_dir_names_from_path():
     return ["_".join(path[:i+1]) for i in range(len(path))]
+
 
 for cmd in f.readlines():
     cmd = cmd.strip()
@@ -43,5 +46,5 @@ smallest = AVAILABLE_SPACE
 for a, b in file_size_by_path.items():
     if AVAILABLE_SPACE + b > SPACE_REQUIRED and b < smallest:
         smallest = b
-    
+
 print(smallest)
