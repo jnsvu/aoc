@@ -25,15 +25,12 @@ for l in f.readlines():
         # p2
         pos = (cycle - 1) % 40
         
-        pixel = "█" if pos in range(x_register - 1, x_register + 2) else "."
+        pixel = "#" if pos in range(x_register - 1, x_register + 2) else "."
         crt_drawing += pixel
-
-        if (cycle == 200): print(pixel, pos, x_register)
 
         if pos == 39: crt_drawing += "\n"
             
-
     x_register += v
 
-# print(sum(signal_strengths))
+print(sum(signal_strengths))
 print(crt_drawing)
