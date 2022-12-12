@@ -3,7 +3,6 @@ import string
 
 input = open("data.txt").readlines()
 
-
 for y in range(len(input)):
     input[y] = input[y].strip()
     for x, c in enumerate(input[y]):
