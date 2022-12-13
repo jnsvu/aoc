@@ -11,7 +11,6 @@ def flatten(l):
     return l[:1] + flatten(l[1:])
 
 def compare(left, right):
-    # print(left, right)
     if type(left) is int and type(right) is int:
         if left == right: return None
         return left <= right
