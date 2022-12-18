@@ -1,8 +1,8 @@
 f = open("data.txt")
 
 data = [l.split(":") for l in f.readlines()]
-sensors = []  # [((8, 7), (2, 10))]
-beacons = []  # [(2, 10)]
+sensors = []
+beacons = []
 
 space = 4_000_000
 
