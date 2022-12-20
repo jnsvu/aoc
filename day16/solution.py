@@ -117,7 +117,6 @@ def dfs_p2(v, ev, minutes, pressure, open_valves, pressure_map):
 # p1
 print(dfs_p1("AA", 30, 0, set(),  {}))
 
-
 # p2
 dfs_p2("AA", "AA", 26, 0, set(),  {})
 print(max_pressure_p2)
