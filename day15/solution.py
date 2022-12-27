@@ -77,9 +77,13 @@ def check_row_p2(y_to_check):
     return intervals
 
 
+no_beacon_spots = union(check_row_p2(2_000_000))
+print(no_beacon_spots)
+
 for y in range(space + 1):
     row = check_row_p2(y)
     row = union(row)
 
     if len(row) > 1:
         print(row[0][1] * space + y)
+        break
