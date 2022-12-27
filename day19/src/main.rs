@@ -78,6 +78,13 @@ fn solve(
         return current_max;
     }
 
+    let cached_max = *cache.get(&(materials, robots.to_vec())).unwrap_or(&0);
+    if cached_max < minutes {
+        cache.insert((materials, robots.to_vec()), minutes);
+    } else {
+        return current_max;
+    }
+
     let mut max = current_max;
 
     bp.costs.iter().enumerate().rev().for_each(|(i, &cost)| {
@@ -96,24 +103,16 @@ fn solve(
                 robots[3] + if i == 3 { 1 } else { 0 },
             ];
 
-            let cached_max = *cache
-                .get(&(next_materials, next_robots.to_vec()))
-                .unwrap_or(&0);
-
-            if cached_max < minutes {
-                cache.insert((next_materials, next_robots.to_vec()), minutes);
-
-                max = solve(
-                    bp,
-                    minutes - 1,
-                    next_materials,
-                    next_robots,
-                    max_robots,
-                    current_max + robots[3],
-                    cache,
-                )
-                .max(max);
-            }
+            max = solve(
+                bp,
+                minutes - 1,
+                next_materials,
+                next_robots,
+                max_robots,
+                current_max + robots[3],
+                cache,
+            )
+            .max(max);
         }
     });
 
@@ -156,7 +155,7 @@ fn p1() {
                 &mut HashMap::new(),
             );
             println!("max {:?}", max_geocides);
-            return max_geocides;
+            return max_geocides * bp.id;
         })
         .collect();
 
@@ -192,5 +191,5 @@ fn p2() {
 
 fn main() {
     p1();
-    p2();
+    // p2();
 }
