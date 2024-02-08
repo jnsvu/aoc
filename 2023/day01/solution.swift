@@ -46,3 +46,4 @@ func resolve(_ values: [String]) -> Int {
 
 print(resolve(valuesP1))
 print(resolve(valuesP2))
+
